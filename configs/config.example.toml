@@ -1,0 +1,7 @@
+bind_url = "8082"
+
+[store]
+database_host = "localhost"
+database_name = "storehouse_db"
+database_user = ""
+database_password = ""
