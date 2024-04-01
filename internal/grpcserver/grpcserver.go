@@ -2,12 +2,10 @@ package grpcserver
 
 import (
 	"context"
-	"fmt"
 
-	// "github.com/jackc/pgx/v5/pgtype"
-	"github.com/maximprokopchuk/storehouse_service/internal/api"
 	"github.com/maximprokopchuk/storehouse_service/internal/sqlc"
 	"github.com/maximprokopchuk/storehouse_service/internal/store"
+	"github.com/maximprokopchuk/storehouse_service/pkg/api"
 )
 
 type GRPCServer struct {
@@ -20,8 +18,8 @@ func New(st *store.Store) *GRPCServer {
 
 func (server *GRPCServer) CreateStorehouse(ctx context.Context, req *api.CreateStorehouseRequest) (*api.Storehouse, error) {
 	params := sqlc.CreateStorehouseParams{
-		Name:   req.Name,
-		CityID: req.CityId,
+		Name:   req.GetName(),
+		CityID: req.GetCityId(),
 	}
 	rec, err := server.Store.Queries.CreateStorehouse(ctx, params)
 
@@ -32,8 +30,7 @@ func (server *GRPCServer) CreateStorehouse(ctx context.Context, req *api.CreateS
 }
 
 func (server *GRPCServer) GetStorehousesListByCityId(ctx context.Context, req *api.GetStorehousesListByCityIdRequest) (*api.GetStorehousesListResponse, error) {
-	fmt.Println(req.CityId)
-	rec, err := server.Store.Queries.GetStorehousesForCity(ctx, req.CityId)
+	rec, err := server.Store.Queries.GetStorehousesByCity(ctx, req.GetCityId())
 
 	if err != nil {
 		return nil, err
@@ -54,7 +51,7 @@ func (server *GRPCServer) GetStorehousesListByCityId(ctx context.Context, req *a
 }
 
 func (server *GRPCServer) GetItemsByStorehouseId(ctx context.Context, req *api.GetItemsByStorehouseIdRequest) (*api.GetItemsByStorehouseIdResponse, error) {
-	rec, err := server.Store.Queries.GetAllItemsInStorehouse(ctx, req.StorehouseId)
+	rec, err := server.Store.Queries.GetAllItemsByStorehouse(ctx, req.GetStorehouseId())
 
 	if err != nil {
 		return nil, err
@@ -74,11 +71,11 @@ func (server *GRPCServer) GetItemsByStorehouseId(ctx context.Context, req *api.G
 }
 
 func (server *GRPCServer) CreateItemForStorehouse(ctx context.Context, req *api.CreateItemForStorehoseRequest) (*api.Item, error) {
-	params := sqlc.AddItemForStorehouseParams{
-		DetailID:     req.DetailId,
-		StorehouseID: req.StorehouseId,
+	params := sqlc.CreateItemForStorehouseParams{
+		ComponentID:  req.GetComponentId(),
+		StorehouseID: req.GetStorehouseId(),
 	}
-	rec, err := server.Store.Queries.AddItemForStorehouse(ctx, params)
+	rec, err := server.Store.Queries.CreateItemForStorehouse(ctx, params)
 
 	if err != nil {
 		return nil, err
@@ -86,7 +83,7 @@ func (server *GRPCServer) CreateItemForStorehouse(ctx context.Context, req *api.
 
 	return &api.Item{
 		Id:           int32(rec.ID),
-		DetailId:     rec.DetailID,
+		ComponentId:  rec.ComponentID,
 		StorehouseId: rec.StorehouseID,
 		Count:        rec.Count,
 	}, nil
@@ -94,8 +91,8 @@ func (server *GRPCServer) CreateItemForStorehouse(ctx context.Context, req *api.
 
 func (server *GRPCServer) UpdateItem(ctx context.Context, req *api.UpdateItemRequest) (*api.Item, error) {
 	params := sqlc.UpdateItemParams{
-		ID:    int64(req.Id),
-		Count: req.Count,
+		ID:    int64(req.GetId()),
+		Count: req.GetCount(),
 	}
 	rec, err := server.Store.Queries.UpdateItem(ctx, params)
 
@@ -105,14 +102,14 @@ func (server *GRPCServer) UpdateItem(ctx context.Context, req *api.UpdateItemReq
 
 	return &api.Item{
 		Id:           int32(rec.ID),
-		DetailId:     rec.DetailID,
+		ComponentId:  rec.ComponentID,
 		StorehouseId: rec.StorehouseID,
 		Count:        rec.Count,
 	}, nil
 }
 
 func (server *GRPCServer) DeleteStorehouse(ctx context.Context, req *api.DeleteStorehouseRequest) (*api.Empty, error) {
-	err := server.Store.Queries.DeleteStorehouse(ctx, int64(req.Id))
+	err := server.Store.Queries.DeleteStorehouse(ctx, int64(req.GetId()))
 
 	if err != nil {
 		return nil, err
@@ -122,7 +119,7 @@ func (server *GRPCServer) DeleteStorehouse(ctx context.Context, req *api.DeleteS
 }
 
 func (server *GRPCServer) DeleteItem(ctx context.Context, req *api.DeleteItemRequest) (*api.Empty, error) {
-	err := server.Store.Queries.DeleteItem(ctx, int64(req.Id))
+	err := server.Store.Queries.DeleteItem(ctx, int64(req.GetId()))
 
 	if err != nil {
 		return nil, err

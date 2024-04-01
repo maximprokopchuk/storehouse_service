@@ -7,10 +7,10 @@ import (
 	"net"
 
 	"github.com/BurntSushi/toml"
-	"github.com/maximprokopchuk/storehouse_service/internal/api"
 	"github.com/maximprokopchuk/storehouse_service/internal/config"
 	"github.com/maximprokopchuk/storehouse_service/internal/grpcserver"
 	"github.com/maximprokopchuk/storehouse_service/internal/store"
+	"github.com/maximprokopchuk/storehouse_service/pkg/api"
 	"google.golang.org/grpc"
 )
 

@@ -9,27 +9,27 @@ import (
 	"context"
 )
 
-const addItemForStorehouse = `-- name: AddItemForStorehouse :one
-INSERT INTO items (
-  detail_id, storehouse_id
+const addItemByStorehouse = `-- name: CreateItemForStorehouse :one
+INSERT INTO item (
+  component_id, storehouse_id
 ) VALUES (
   $1, $2
 )
-RETURNING id, storehouse_id, detail_id, count
+RETURNING id, storehouse_id, component_id, count
 `
 
-type AddItemForStorehouseParams struct {
-	DetailID     int32
+type CreateItemForStorehouseParams struct {
+	ComponentID  int32
 	StorehouseID int32
 }
 
-func (q *Queries) AddItemForStorehouse(ctx context.Context, arg AddItemForStorehouseParams) (Item, error) {
-	row := q.db.QueryRow(ctx, addItemForStorehouse, arg.DetailID, arg.StorehouseID)
+func (q *Queries) CreateItemForStorehouse(ctx context.Context, arg CreateItemForStorehouseParams) (Item, error) {
+	row := q.db.QueryRow(ctx, addItemByStorehouse, arg.ComponentID, arg.StorehouseID)
 	var i Item
 	err := row.Scan(
 		&i.ID,
 		&i.StorehouseID,
-		&i.DetailID,
+		&i.ComponentID,
 		&i.Count,
 	)
 	return i, err
@@ -57,7 +57,7 @@ func (q *Queries) CreateStorehouse(ctx context.Context, arg CreateStorehousePara
 }
 
 const deleteItem = `-- name: DeleteItem :exec
-DELETE FROM items
+DELETE FROM item
 WHERE id = $1
 `
 
@@ -76,13 +76,13 @@ func (q *Queries) DeleteStorehouse(ctx context.Context, id int64) error {
 	return err
 }
 
-const getAllItemsInStorehouse = `-- name: GetAllItemsInStorehouse :many
-SELECT id, storehouse_id, detail_id, count FROM items
+const getAllItemsByStorehouse = `-- name: GetAllItemsByStorehouse :many
+SELECT id, storehouse_id, component_id, count FROM item
 WHERE storehouse_id = $1
 `
 
-func (q *Queries) GetAllItemsInStorehouse(ctx context.Context, storehouseID int32) ([]Item, error) {
-	rows, err := q.db.Query(ctx, getAllItemsInStorehouse, storehouseID)
+func (q *Queries) GetAllItemsByStorehouse(ctx context.Context, storehouseID int32) ([]Item, error) {
+	rows, err := q.db.Query(ctx, getAllItemsByStorehouse, storehouseID)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (q *Queries) GetAllItemsInStorehouse(ctx context.Context, storehouseID int3
 		if err := rows.Scan(
 			&i.ID,
 			&i.StorehouseID,
-			&i.DetailID,
+			&i.ComponentID,
 			&i.Count,
 		); err != nil {
 			return nil, err
@@ -106,13 +106,13 @@ func (q *Queries) GetAllItemsInStorehouse(ctx context.Context, storehouseID int3
 	return items, nil
 }
 
-const getStorehousesForCity = `-- name: GetStorehousesForCity :many
+const getStorehousesByCity = `-- name: GetStorehousesByCity :many
 SELECT id, city_id, name FROM storehouse
 WHERE city_id = $1
 `
 
-func (q *Queries) GetStorehousesForCity(ctx context.Context, cityID int32) ([]Storehouse, error) {
-	rows, err := q.db.Query(ctx, getStorehousesForCity, cityID)
+func (q *Queries) GetStorehousesByCity(ctx context.Context, cityID int32) ([]Storehouse, error) {
+	rows, err := q.db.Query(ctx, getStorehousesByCity, cityID)
 	if err != nil {
 		return nil, err
 	}
@@ -132,10 +132,10 @@ func (q *Queries) GetStorehousesForCity(ctx context.Context, cityID int32) ([]St
 }
 
 const updateItem = `-- name: UpdateItem :one
-UPDATE items
+UPDATE item
 SET count = $2
 WHERE id = $1
-RETURNING id, storehouse_id, detail_id, count
+RETURNING id, storehouse_id, component_id, count
 `
 
 type UpdateItemParams struct {
@@ -149,7 +149,7 @@ func (q *Queries) UpdateItem(ctx context.Context, arg UpdateItemParams) (Item, e
 	err := row.Scan(
 		&i.ID,
 		&i.StorehouseID,
-		&i.DetailID,
+		&i.ComponentID,
 		&i.Count,
 	)
 	return i, err

@@ -6,25 +6,25 @@ INSERT INTO storehouse (
 )
 RETURNING *;
 
--- name: GetStorehousesForCity :many
+-- name: GetStorehousesByCity :many
 SELECT * FROM storehouse
 WHERE city_id = $1;
 
 
--- name: GetAllItemsInStorehouse :many
-SELECT * FROM items
+-- name: GetAllItemsByStorehouse :many
+SELECT * FROM item
 WHERE storehouse_id = $1;
 
--- name: AddItemForStorehouse :one
-INSERT INTO items (
-  detail_id, storehouse_id
+-- name: CreateItemForStorehouse :one
+INSERT INTO item (
+  component_id, storehouse_id
 ) VALUES (
   $1, $2
 )
 RETURNING *;
 
 -- name: UpdateItem :one
-UPDATE items
+UPDATE item
 SET count = $2
 WHERE id = $1
 RETURNING *;
@@ -35,5 +35,5 @@ DELETE FROM storehouse
 WHERE id = $1;
 
 -- name: DeleteItem :exec
-DELETE FROM items
+DELETE FROM item
 WHERE id = $1;

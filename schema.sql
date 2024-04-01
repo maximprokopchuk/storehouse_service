@@ -4,10 +4,10 @@ CREATE TABLE storehouse (
   name    text      NOT NULL
 );
 
-CREATE TABLE items (
+CREATE TABLE item (
   id            BIGSERIAL PRIMARY KEY,
   storehouse_id    INTEGER NOT NULL,
-  detail_id     INTEGER NOT NULL,
+  component_id     INTEGER NOT NULL,
   count         INTEGER NOT NULL DEFAULT 1,
 
   FOREIGN KEY (storehouse_id) REFERENCES storehouse(id) ON DELETE CASCADE

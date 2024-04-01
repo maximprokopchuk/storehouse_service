@@ -24,7 +24,7 @@ message GetStorehousesListResponse {
 message Item {
     int32 id = 1;
     int32 storehouse_id = 2;
-    int32 detail_id = 3;
+    int32 component_id = 3;
     int32 count = 4;
 }
 
@@ -37,7 +37,7 @@ message GetItemsByStorehouseIdResponse {
 }
 
 message CreateItemForStorehoseRequest {
-    int32 detail_id = 1;
+    int32 component_id = 1;
     int32 storehouse_id = 2;
 }
 

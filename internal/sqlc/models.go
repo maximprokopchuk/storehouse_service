@@ -7,7 +7,7 @@ package sqlc
 type Item struct {
 	ID           int64
 	StorehouseID int32
-	DetailID     int32
+	ComponentID  int32
 	Count        int32
 }
 
