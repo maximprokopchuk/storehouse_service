@@ -4,7 +4,7 @@ CREATE TABLE storehouse (
   name    text      NOT NULL
 );
 
-CREATE TABLE item (
+CREATE TABLE storehouse_item (
   id            BIGSERIAL PRIMARY KEY,
   storehouse_id    INTEGER NOT NULL,
   component_id     INTEGER NOT NULL,

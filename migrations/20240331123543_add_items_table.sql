@@ -1,7 +1,7 @@
 
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE item (
+CREATE TABLE storehouse_item (
   id            BIGSERIAL PRIMARY KEY,
   storehouse_id    INTEGER NOT NULL,
   component_id     INTEGER NOT NULL,
@@ -13,5 +13,5 @@ CREATE TABLE item (
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE item;
+DROP TABLE storehouse_item;
 -- +goose StatementEnd

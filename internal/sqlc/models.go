@@ -4,15 +4,15 @@
 
 package sqlc
 
-type Item struct {
-	ID           int64
-	StorehouseID int32
-	ComponentID  int32
-	Count        int32
-}
-
 type Storehouse struct {
 	ID     int64
 	CityID int32
 	Name   string
+}
+
+type StorehouseItem struct {
+	ID           int64
+	StorehouseID int32
+	ComponentID  int32
+	Count        int32
 }
