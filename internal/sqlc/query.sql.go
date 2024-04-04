@@ -108,16 +108,16 @@ func (q *Queries) GetAllStorehouseItemsByStorehouse(ctx context.Context, storeho
 
 const getStorehouseItemsByStorehouseAndComponents = `-- name: GetStorehouseItemsByStorehouseAndComponents :many
 SELECT id, storehouse_id, component_id, count FROM storehouse_item
-WHERE storehouse_id = $1 AND component_id IN ($2)
+WHERE storehouse_id = $1 AND component_id = ANY($2::int[])
 `
 
 type GetStorehouseItemsByStorehouseAndComponentsParams struct {
 	StorehouseID int32
-	ComponentIds []int32
+	Column2      []int32
 }
 
 func (q *Queries) GetStorehouseItemsByStorehouseAndComponents(ctx context.Context, arg GetStorehouseItemsByStorehouseAndComponentsParams) ([]StorehouseItem, error) {
-	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponents, arg.StorehouseID, arg.ComponentIds)
+	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponents, arg.StorehouseID, arg.Column2)
 	if err != nil {
 		return nil, err
 	}

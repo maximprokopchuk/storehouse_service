@@ -2,6 +2,7 @@ package grpcserver
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/maximprokopchuk/storehouse_service/internal/sqlc"
 	"github.com/maximprokopchuk/storehouse_service/internal/store"
@@ -83,6 +84,7 @@ func (server *GRPCServer) GetStorehouseItemsByStorehouseIdAndComponentsIds(ctx c
 	}
 	rec, err := server.Store.Queries.GetStorehouseItemsByStorehouseAndComponents(ctx, params)
 
+	fmt.Println(err)
 	if err != nil {
 		return nil, err
 	}
