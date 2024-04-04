@@ -15,6 +15,11 @@ WHERE city_id = $1;
 SELECT * FROM storehouse_item
 WHERE storehouse_id = $1;
 
+
+-- name: GetStorehouseItemsByStorehouseAndComponents :many
+SELECT * FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id IN (sqlc.slice('component_ids'));
+
 -- name: CreateStorehouseItemForStorehouse :one
 INSERT INTO storehouse_item (
   component_id, storehouse_id

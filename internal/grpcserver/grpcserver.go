@@ -76,6 +76,30 @@ func (server *GRPCServer) GetStorehouseItemsByStorehouseId(ctx context.Context, 
 	return &api.GetStorehouseItemsByStorehouseIdResponse{Result: items}, nil
 }
 
+func (server *GRPCServer) GetStorehouseItemsByStorehouseIdAndComponentsIds(ctx context.Context, req *api.GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) (*api.GetStorehouseItemsByStorehouseIdAndComponentsIdsRequestResponse, error) {
+	params := sqlc.GetStorehouseItemsByStorehouseAndComponentsParams{
+		StorehouseID: req.GetStorehouseId(),
+		ComponentIds: req.GetComponentIds(),
+	}
+	rec, err := server.Store.Queries.GetStorehouseItemsByStorehouseAndComponents(ctx, params)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var items []*api.StorehouseItem
+
+	for _, item := range rec {
+		newRec := api.StorehouseItem{
+			Id:    int32(item.ID),
+			Count: item.Count,
+		}
+		items = append(items, &newRec)
+	}
+
+	return &api.GetStorehouseItemsByStorehouseIdAndComponentsIdsRequestResponse{Result: items}, nil
+}
+
 func (server *GRPCServer) CreateStorehouseItemForStorehouse(ctx context.Context, req *api.CreateStorehouseItemForStorehoseRequest) (*api.CreateStorehouseItemResponse, error) {
 	params := sqlc.CreateStorehouseItemForStorehouseParams{
 		ComponentID:  req.GetComponentId(),

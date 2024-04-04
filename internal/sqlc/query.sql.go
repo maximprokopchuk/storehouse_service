@@ -106,6 +106,41 @@ func (q *Queries) GetAllStorehouseItemsByStorehouse(ctx context.Context, storeho
 	return items, nil
 }
 
+const getStorehouseItemsByStorehouseAndComponents = `-- name: GetStorehouseItemsByStorehouseAndComponents :many
+SELECT id, storehouse_id, component_id, count FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id IN ($2)
+`
+
+type GetStorehouseItemsByStorehouseAndComponentsParams struct {
+	StorehouseID int32
+	ComponentIds []int32
+}
+
+func (q *Queries) GetStorehouseItemsByStorehouseAndComponents(ctx context.Context, arg GetStorehouseItemsByStorehouseAndComponentsParams) ([]StorehouseItem, error) {
+	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponents, arg.StorehouseID, arg.ComponentIds)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []StorehouseItem
+	for rows.Next() {
+		var i StorehouseItem
+		if err := rows.Scan(
+			&i.ID,
+			&i.StorehouseID,
+			&i.ComponentID,
+			&i.Count,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getStorehousesByCity = `-- name: GetStorehousesByCity :many
 SELECT id, city_id, name FROM storehouse
 WHERE city_id = $1
