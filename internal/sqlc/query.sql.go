@@ -112,12 +112,12 @@ WHERE storehouse_id = $1 AND component_id = ANY($2::int[])
 `
 
 type GetStorehouseItemsByStorehouseAndComponentsParams struct {
-	StorehouseID int32
-	Column2      []int32
+	StorehouseID  int32
+	ComponentsIds []int32
 }
 
 func (q *Queries) GetStorehouseItemsByStorehouseAndComponents(ctx context.Context, arg GetStorehouseItemsByStorehouseAndComponentsParams) ([]StorehouseItem, error) {
-	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponents, arg.StorehouseID, arg.Column2)
+	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponents, arg.StorehouseID, arg.ComponentsIds)
 	if err != nil {
 		return nil, err
 	}
