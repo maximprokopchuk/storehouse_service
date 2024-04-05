@@ -267,45 +267,6 @@ func (m *GetStorehousesListByCityIdRequest) GetCityId() int32 {
 	return 0
 }
 
-type GetStorehousesListResponse struct {
-	Result               []*Storehouse `protobuf:"bytes,1,rep,name=result,proto3" json:"result,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *GetStorehousesListResponse) Reset()         { *m = GetStorehousesListResponse{} }
-func (m *GetStorehousesListResponse) String() string { return proto.CompactTextString(m) }
-func (*GetStorehousesListResponse) ProtoMessage()    {}
-func (*GetStorehousesListResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{5}
-}
-
-func (m *GetStorehousesListResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetStorehousesListResponse.Unmarshal(m, b)
-}
-func (m *GetStorehousesListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetStorehousesListResponse.Marshal(b, m, deterministic)
-}
-func (m *GetStorehousesListResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetStorehousesListResponse.Merge(m, src)
-}
-func (m *GetStorehousesListResponse) XXX_Size() int {
-	return xxx_messageInfo_GetStorehousesListResponse.Size(m)
-}
-func (m *GetStorehousesListResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetStorehousesListResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetStorehousesListResponse proto.InternalMessageInfo
-
-func (m *GetStorehousesListResponse) GetResult() []*Storehouse {
-	if m != nil {
-		return m.Result
-	}
-	return nil
-}
-
 type GetStorehouseItemsByStorehouseIdRequest struct {
 	StorehouseId         int32    `protobuf:"varint,1,opt,name=storehouse_id,json=storehouseId,proto3" json:"storehouse_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -319,7 +280,7 @@ func (m *GetStorehouseItemsByStorehouseIdRequest) Reset() {
 func (m *GetStorehouseItemsByStorehouseIdRequest) String() string { return proto.CompactTextString(m) }
 func (*GetStorehouseItemsByStorehouseIdRequest) ProtoMessage()    {}
 func (*GetStorehouseItemsByStorehouseIdRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{6}
+	return fileDescriptor_00c6b29dd839b5b0, []int{5}
 }
 
 func (m *GetStorehouseItemsByStorehouseIdRequest) XXX_Unmarshal(b []byte) error {
@@ -347,6 +308,123 @@ func (m *GetStorehouseItemsByStorehouseIdRequest) GetStorehouseId() int32 {
 	return 0
 }
 
+type GetStorehousesListResponse struct {
+	Result               []*Storehouse `protobuf:"bytes,1,rep,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *GetStorehousesListResponse) Reset()         { *m = GetStorehousesListResponse{} }
+func (m *GetStorehousesListResponse) String() string { return proto.CompactTextString(m) }
+func (*GetStorehousesListResponse) ProtoMessage()    {}
+func (*GetStorehousesListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00c6b29dd839b5b0, []int{6}
+}
+
+func (m *GetStorehousesListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetStorehousesListResponse.Unmarshal(m, b)
+}
+func (m *GetStorehousesListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetStorehousesListResponse.Marshal(b, m, deterministic)
+}
+func (m *GetStorehousesListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetStorehousesListResponse.Merge(m, src)
+}
+func (m *GetStorehousesListResponse) XXX_Size() int {
+	return xxx_messageInfo_GetStorehousesListResponse.Size(m)
+}
+func (m *GetStorehousesListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetStorehousesListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetStorehousesListResponse proto.InternalMessageInfo
+
+func (m *GetStorehousesListResponse) GetResult() []*Storehouse {
+	if m != nil {
+		return m.Result
+	}
+	return nil
+}
+
+type GetStorehouseItemByIdRequest struct {
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetStorehouseItemByIdRequest) Reset()         { *m = GetStorehouseItemByIdRequest{} }
+func (m *GetStorehouseItemByIdRequest) String() string { return proto.CompactTextString(m) }
+func (*GetStorehouseItemByIdRequest) ProtoMessage()    {}
+func (*GetStorehouseItemByIdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00c6b29dd839b5b0, []int{7}
+}
+
+func (m *GetStorehouseItemByIdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetStorehouseItemByIdRequest.Unmarshal(m, b)
+}
+func (m *GetStorehouseItemByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetStorehouseItemByIdRequest.Marshal(b, m, deterministic)
+}
+func (m *GetStorehouseItemByIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetStorehouseItemByIdRequest.Merge(m, src)
+}
+func (m *GetStorehouseItemByIdRequest) XXX_Size() int {
+	return xxx_messageInfo_GetStorehouseItemByIdRequest.Size(m)
+}
+func (m *GetStorehouseItemByIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetStorehouseItemByIdRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetStorehouseItemByIdRequest proto.InternalMessageInfo
+
+func (m *GetStorehouseItemByIdRequest) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type GetStorehouseItemByIdResponse struct {
+	Result               *StorehouseItem `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *GetStorehouseItemByIdResponse) Reset()         { *m = GetStorehouseItemByIdResponse{} }
+func (m *GetStorehouseItemByIdResponse) String() string { return proto.CompactTextString(m) }
+func (*GetStorehouseItemByIdResponse) ProtoMessage()    {}
+func (*GetStorehouseItemByIdResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00c6b29dd839b5b0, []int{8}
+}
+
+func (m *GetStorehouseItemByIdResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetStorehouseItemByIdResponse.Unmarshal(m, b)
+}
+func (m *GetStorehouseItemByIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetStorehouseItemByIdResponse.Marshal(b, m, deterministic)
+}
+func (m *GetStorehouseItemByIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetStorehouseItemByIdResponse.Merge(m, src)
+}
+func (m *GetStorehouseItemByIdResponse) XXX_Size() int {
+	return xxx_messageInfo_GetStorehouseItemByIdResponse.Size(m)
+}
+func (m *GetStorehouseItemByIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetStorehouseItemByIdResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetStorehouseItemByIdResponse proto.InternalMessageInfo
+
+func (m *GetStorehouseItemByIdResponse) GetResult() *StorehouseItem {
+	if m != nil {
+		return m.Result
+	}
+	return nil
+}
+
 type GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest struct {
 	StorehouseId         int32    `protobuf:"varint,1,opt,name=storehouse_id,json=storehouseId,proto3" json:"storehouse_id,omitempty"`
 	ComponentIds         []int32  `protobuf:"varint,2,rep,packed,name=component_ids,json=componentIds,proto3" json:"component_ids,omitempty"`
@@ -363,7 +441,7 @@ func (m *GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) String() strin
 }
 func (*GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) ProtoMessage() {}
 func (*GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{7}
+	return fileDescriptor_00c6b29dd839b5b0, []int{9}
 }
 
 func (m *GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) XXX_Unmarshal(b []byte) error {
@@ -413,7 +491,7 @@ func (m *GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse) String() stri
 }
 func (*GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse) ProtoMessage() {}
 func (*GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{8}
+	return fileDescriptor_00c6b29dd839b5b0, []int{10}
 }
 
 func (m *GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse) XXX_Unmarshal(b []byte) error {
@@ -454,7 +532,7 @@ func (m *GetStorehouseItemsByStorehouseIdResponse) Reset() {
 func (m *GetStorehouseItemsByStorehouseIdResponse) String() string { return proto.CompactTextString(m) }
 func (*GetStorehouseItemsByStorehouseIdResponse) ProtoMessage()    {}
 func (*GetStorehouseItemsByStorehouseIdResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{9}
+	return fileDescriptor_00c6b29dd839b5b0, []int{11}
 }
 
 func (m *GetStorehouseItemsByStorehouseIdResponse) XXX_Unmarshal(b []byte) error {
@@ -497,7 +575,7 @@ func (m *CreateStorehouseItemForStorehoseRequest) Reset() {
 func (m *CreateStorehouseItemForStorehoseRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateStorehouseItemForStorehoseRequest) ProtoMessage()    {}
 func (*CreateStorehouseItemForStorehoseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{10}
+	return fileDescriptor_00c6b29dd839b5b0, []int{12}
 }
 
 func (m *CreateStorehouseItemForStorehoseRequest) XXX_Unmarshal(b []byte) error {
@@ -550,7 +628,7 @@ func (m *CreateStorehouseItemResponse) Reset()         { *m = CreateStorehouseIt
 func (m *CreateStorehouseItemResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateStorehouseItemResponse) ProtoMessage()    {}
 func (*CreateStorehouseItemResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{11}
+	return fileDescriptor_00c6b29dd839b5b0, []int{13}
 }
 
 func (m *CreateStorehouseItemResponse) XXX_Unmarshal(b []byte) error {
@@ -590,7 +668,7 @@ func (m *UpdateStorehouseItemRequest) Reset()         { *m = UpdateStorehouseIte
 func (m *UpdateStorehouseItemRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateStorehouseItemRequest) ProtoMessage()    {}
 func (*UpdateStorehouseItemRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{12}
+	return fileDescriptor_00c6b29dd839b5b0, []int{14}
 }
 
 func (m *UpdateStorehouseItemRequest) XXX_Unmarshal(b []byte) error {
@@ -636,7 +714,7 @@ func (m *UpdateStorehouseItemResponse) Reset()         { *m = UpdateStorehouseIt
 func (m *UpdateStorehouseItemResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdateStorehouseItemResponse) ProtoMessage()    {}
 func (*UpdateStorehouseItemResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{13}
+	return fileDescriptor_00c6b29dd839b5b0, []int{15}
 }
 
 func (m *UpdateStorehouseItemResponse) XXX_Unmarshal(b []byte) error {
@@ -675,7 +753,7 @@ func (m *DeleteStorehouseRequest) Reset()         { *m = DeleteStorehouseRequest
 func (m *DeleteStorehouseRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteStorehouseRequest) ProtoMessage()    {}
 func (*DeleteStorehouseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{14}
+	return fileDescriptor_00c6b29dd839b5b0, []int{16}
 }
 
 func (m *DeleteStorehouseRequest) XXX_Unmarshal(b []byte) error {
@@ -713,7 +791,7 @@ func (m *DeleteStorehouseResponse) Reset()         { *m = DeleteStorehouseRespon
 func (m *DeleteStorehouseResponse) String() string { return proto.CompactTextString(m) }
 func (*DeleteStorehouseResponse) ProtoMessage()    {}
 func (*DeleteStorehouseResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{15}
+	return fileDescriptor_00c6b29dd839b5b0, []int{17}
 }
 
 func (m *DeleteStorehouseResponse) XXX_Unmarshal(b []byte) error {
@@ -745,7 +823,7 @@ func (m *DeleteStorehouseItemRequest) Reset()         { *m = DeleteStorehouseIte
 func (m *DeleteStorehouseItemRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteStorehouseItemRequest) ProtoMessage()    {}
 func (*DeleteStorehouseItemRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{16}
+	return fileDescriptor_00c6b29dd839b5b0, []int{18}
 }
 
 func (m *DeleteStorehouseItemRequest) XXX_Unmarshal(b []byte) error {
@@ -773,6 +851,57 @@ func (m *DeleteStorehouseItemRequest) GetId() int32 {
 	return 0
 }
 
+type DeleteStorehouseItemsByComponentIdsRequest struct {
+	StorehouseId         int32    `protobuf:"varint,1,opt,name=storehouse_id,json=storehouseId,proto3" json:"storehouse_id,omitempty"`
+	ComponentIds         []int32  `protobuf:"varint,2,rep,packed,name=componentIds,proto3" json:"componentIds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteStorehouseItemsByComponentIdsRequest) Reset() {
+	*m = DeleteStorehouseItemsByComponentIdsRequest{}
+}
+func (m *DeleteStorehouseItemsByComponentIdsRequest) String() string {
+	return proto.CompactTextString(m)
+}
+func (*DeleteStorehouseItemsByComponentIdsRequest) ProtoMessage() {}
+func (*DeleteStorehouseItemsByComponentIdsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00c6b29dd839b5b0, []int{19}
+}
+
+func (m *DeleteStorehouseItemsByComponentIdsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest.Unmarshal(m, b)
+}
+func (m *DeleteStorehouseItemsByComponentIdsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteStorehouseItemsByComponentIdsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest.Merge(m, src)
+}
+func (m *DeleteStorehouseItemsByComponentIdsRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest.Size(m)
+}
+func (m *DeleteStorehouseItemsByComponentIdsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteStorehouseItemsByComponentIdsRequest proto.InternalMessageInfo
+
+func (m *DeleteStorehouseItemsByComponentIdsRequest) GetStorehouseId() int32 {
+	if m != nil {
+		return m.StorehouseId
+	}
+	return 0
+}
+
+func (m *DeleteStorehouseItemsByComponentIdsRequest) GetComponentIds() []int32 {
+	if m != nil {
+		return m.ComponentIds
+	}
+	return nil
+}
+
 type DeleteStorehouseItemResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -783,7 +912,7 @@ func (m *DeleteStorehouseItemResponse) Reset()         { *m = DeleteStorehouseIt
 func (m *DeleteStorehouseItemResponse) String() string { return proto.CompactTextString(m) }
 func (*DeleteStorehouseItemResponse) ProtoMessage()    {}
 func (*DeleteStorehouseItemResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_00c6b29dd839b5b0, []int{17}
+	return fileDescriptor_00c6b29dd839b5b0, []int{20}
 }
 
 func (m *DeleteStorehouseItemResponse) XXX_Unmarshal(b []byte) error {
@@ -810,8 +939,10 @@ func init() {
 	proto.RegisterType((*CreateStorehouseRequest)(nil), "api.CreateStorehouseRequest")
 	proto.RegisterType((*CreateStorehouseResponse)(nil), "api.CreateStorehouseResponse")
 	proto.RegisterType((*GetStorehousesListByCityIdRequest)(nil), "api.GetStorehousesListByCityIdRequest")
-	proto.RegisterType((*GetStorehousesListResponse)(nil), "api.GetStorehousesListResponse")
 	proto.RegisterType((*GetStorehouseItemsByStorehouseIdRequest)(nil), "api.GetStorehouseItemsByStorehouseIdRequest")
+	proto.RegisterType((*GetStorehousesListResponse)(nil), "api.GetStorehousesListResponse")
+	proto.RegisterType((*GetStorehouseItemByIdRequest)(nil), "api.GetStorehouseItemByIdRequest")
+	proto.RegisterType((*GetStorehouseItemByIdResponse)(nil), "api.GetStorehouseItemByIdResponse")
 	proto.RegisterType((*GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest)(nil), "api.GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest")
 	proto.RegisterType((*GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse)(nil), "api.GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse")
 	proto.RegisterType((*GetStorehouseItemsByStorehouseIdResponse)(nil), "api.GetStorehouseItemsByStorehouseIdResponse")
@@ -822,51 +953,56 @@ func init() {
 	proto.RegisterType((*DeleteStorehouseRequest)(nil), "api.DeleteStorehouseRequest")
 	proto.RegisterType((*DeleteStorehouseResponse)(nil), "api.DeleteStorehouseResponse")
 	proto.RegisterType((*DeleteStorehouseItemRequest)(nil), "api.DeleteStorehouseItemRequest")
+	proto.RegisterType((*DeleteStorehouseItemsByComponentIdsRequest)(nil), "api.DeleteStorehouseItemsByComponentIdsRequest")
 	proto.RegisterType((*DeleteStorehouseItemResponse)(nil), "api.DeleteStorehouseItemResponse")
 }
 
 func init() { proto.RegisterFile("storehouse.proto", fileDescriptor_00c6b29dd839b5b0) }
 
 var fileDescriptor_00c6b29dd839b5b0 = []byte{
-	// 603 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x41, 0x6f, 0xd3, 0x4c,
-	0x10, 0xcd, 0xda, 0x6d, 0xaa, 0x6f, 0xda, 0xaf, 0x94, 0xa5, 0x52, 0x2c, 0x37, 0x80, 0xb3, 0x48,
-	0x24, 0x88, 0x36, 0x42, 0xe5, 0x00, 0x87, 0x72, 0xa0, 0x86, 0x22, 0x0b, 0x84, 0x44, 0x2a, 0xc4,
-	0x09, 0xa1, 0x10, 0xaf, 0x8a, 0xa5, 0xc6, 0x36, 0xde, 0x4d, 0xa5, 0x5c, 0x90, 0x10, 0x07, 0xae,
-	0xfc, 0x15, 0xfe, 0x21, 0xf2, 0xda, 0xb1, 0x9d, 0xf5, 0xda, 0x4e, 0x72, 0x8b, 0x77, 0x66, 0xdf,
-	0xbc, 0x99, 0xd9, 0xf7, 0x14, 0x38, 0x60, 0x3c, 0x88, 0xe8, 0xb7, 0x60, 0xc6, 0xe8, 0x30, 0x8c,
-	0x02, 0x1e, 0x60, 0x7d, 0x1c, 0x7a, 0xc4, 0x01, 0xb8, 0xcc, 0x02, 0x78, 0x1f, 0x34, 0xcf, 0x35,
-	0x90, 0x85, 0x06, 0xdb, 0x23, 0xcd, 0x73, 0x31, 0x86, 0x2d, 0x7f, 0x3c, 0xa5, 0x86, 0x66, 0xa1,
-	0xc1, 0x7f, 0x23, 0xf1, 0x1b, 0x77, 0x60, 0x67, 0xe2, 0xf1, 0xf9, 0x17, 0xcf, 0x35, 0x74, 0x91,
-	0xd8, 0x8e, 0x3f, 0x1d, 0x97, 0xfc, 0x80, 0xfd, 0x1c, 0xca, 0xe1, 0x74, 0x5a, 0x82, 0x7b, 0x00,
-	0xff, 0xe7, 0x2c, 0x62, 0x00, 0x4d, 0x84, 0xf6, 0xf2, 0x43, 0xc7, 0xc5, 0x3d, 0xd8, 0x9b, 0x04,
-	0xd3, 0x30, 0xf0, 0xa9, 0xcf, 0xf3, 0x22, 0xbb, 0xd9, 0x99, 0xe3, 0xe2, 0x43, 0xd8, 0x9e, 0x04,
-	0x33, 0x9f, 0x1b, 0x5b, 0x22, 0x96, 0x7c, 0x90, 0x0b, 0xe8, 0xd8, 0x11, 0x1d, 0x73, 0x9a, 0xb3,
-	0x18, 0xd1, 0xef, 0x33, 0xca, 0x78, 0xd6, 0x07, 0x52, 0xf7, 0xa1, 0x2d, 0xf5, 0x61, 0x83, 0x51,
-	0xc6, 0x61, 0x61, 0xe0, 0x33, 0x8a, 0xfb, 0xd0, 0x8e, 0x28, 0x9b, 0x5d, 0x73, 0x01, 0xb5, 0x7b,
-	0x7a, 0x6b, 0x38, 0x0e, 0xbd, 0x61, 0x21, 0x31, 0x0d, 0x93, 0x33, 0xe8, 0xbd, 0xa1, 0x3c, 0x0f,
-	0xb0, 0x77, 0x1e, 0xe3, 0xe7, 0x73, 0x5b, 0x94, 0x58, 0xd0, 0x2a, 0x50, 0x40, 0x4b, 0x14, 0x5e,
-	0x83, 0x59, 0xbe, 0xad, 0x24, 0xa1, 0xd7, 0x91, 0x78, 0x0f, 0xfd, 0x25, 0x98, 0x78, 0x29, 0xec,
-	0x7c, 0x5e, 0x38, 0xc8, 0xa8, 0x94, 0x56, 0x83, 0xca, 0xab, 0x21, 0xbf, 0x10, 0x3c, 0x6b, 0x02,
-	0x7c, 0xe9, 0xbb, 0xf6, 0x62, 0x55, 0xcc, 0x71, 0xd9, 0x3a, 0x05, 0xe2, 0xa4, 0xe2, 0xee, 0x99,
-	0xa1, 0x59, 0x7a, 0x9c, 0x54, 0x58, 0x3e, 0x23, 0x57, 0xf0, 0x7c, 0x7d, 0x12, 0xe9, 0xe8, 0x1e,
-	0x4b, 0xa3, 0xbb, 0x23, 0x8d, 0x2e, 0xc6, 0xca, 0xc6, 0xf7, 0x09, 0x06, 0xcd, 0xe3, 0xdb, 0x04,
-	0xf8, 0x37, 0x82, 0xbe, 0xfc, 0xc4, 0xe2, 0x84, 0x8b, 0x20, 0x4a, 0x0f, 0xf2, 0xa7, 0x2b, 0xcb,
-	0x01, 0x95, 0xe5, 0xb0, 0x92, 0xac, 0x32, 0xcd, 0xe8, 0x45, 0xcd, 0xbc, 0x85, 0xae, 0x8a, 0x88,
-	0xb2, 0x2d, 0xd4, 0xd4, 0x96, 0x0d, 0x47, 0x1f, 0x43, 0x57, 0x01, 0x96, 0x74, 0x22, 0xbb, 0x41,
-	0xc6, 0x48, 0x93, 0x18, 0xa9, 0x41, 0x36, 0x61, 0xf4, 0x08, 0x3a, 0xaf, 0xe8, 0x35, 0x55, 0x59,
-	0x82, 0xc4, 0x86, 0x98, 0x60, 0x94, 0x53, 0x93, 0x9a, 0xe4, 0x04, 0x8e, 0xe4, 0x58, 0x4d, 0x63,
-	0xe4, 0x1e, 0x74, 0xd5, 0xe9, 0x09, 0xdc, 0xe9, 0x9f, 0x1d, 0xb8, 0x9d, 0x87, 0x2e, 0x69, 0x74,
-	0xe3, 0x4d, 0x28, 0xfe, 0x00, 0x07, 0xf2, 0x2a, 0x70, 0x57, 0x34, 0x57, 0xe1, 0x6a, 0xe6, 0xdd,
-	0x8a, 0x68, 0xca, 0xba, 0x85, 0xaf, 0x54, 0x36, 0xb2, 0x30, 0x21, 0xfc, 0x50, 0x5c, 0x6f, 0x74,
-	0x29, 0xf3, 0x7e, 0x45, 0x5e, 0xa1, 0xd0, 0x4f, 0x04, 0x56, 0x93, 0x54, 0xf0, 0x71, 0x19, 0xa7,
-	0xda, 0x90, 0xcc, 0x93, 0x15, 0xb3, 0x33, 0x0e, 0x7f, 0x11, 0x3c, 0x59, 0xd7, 0x17, 0xf0, 0xd9,
-	0x4a, 0x55, 0x2a, 0x3c, 0xcd, 0x7c, 0xb1, 0xe1, 0xed, 0x8c, 0xf3, 0x0d, 0xf4, 0xea, 0x7d, 0x20,
-	0x7e, 0x04, 0xc7, 0xca, 0x35, 0x57, 0xf8, 0x85, 0xd9, 0xab, 0xcc, 0x2e, 0xd4, 0xfd, 0x0c, 0x87,
-	0x2a, 0x91, 0x61, 0x4b, 0x5c, 0xae, 0x11, 0x71, 0x0a, 0x5f, 0xa7, 0xd0, 0x04, 0x5e, 0x25, 0x80,
-	0x14, 0xbe, 0x46, 0x4a, 0x29, 0x7c, 0x9d, 0x7a, 0x48, 0x2b, 0x56, 0x8a, 0x9c, 0x91, 0x2a, 0xa5,
-	0x42, 0xec, 0xa9, 0x52, 0x2a, 0xf5, 0xdd, 0xfa, 0xda, 0x16, 0x7f, 0x89, 0x9e, 0xfe, 0x0b, 0x00,
-	0x00, 0xff, 0xff, 0xf5, 0x2f, 0x30, 0x04, 0x26, 0x09, 0x00, 0x00,
+	// 671 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x4d, 0x6f, 0xd3, 0x40,
+	0x10, 0xed, 0xda, 0x6d, 0x80, 0x69, 0x29, 0x61, 0x29, 0x8a, 0xe5, 0xa6, 0x90, 0x6c, 0x25, 0x12,
+	0xa0, 0x0d, 0xa8, 0x1c, 0xe0, 0x50, 0x0e, 0xc4, 0x50, 0x64, 0x51, 0x21, 0x35, 0x15, 0xe2, 0x84,
+	0x20, 0xc4, 0xab, 0x62, 0xa9, 0xb1, 0x8d, 0x77, 0x53, 0x29, 0x42, 0x42, 0x42, 0x1c, 0xf8, 0x3d,
+	0xfc, 0x32, 0xfe, 0x02, 0xb2, 0xe3, 0xd8, 0xce, 0x7a, 0xd7, 0xf9, 0xb8, 0xd5, 0x3b, 0x6f, 0xde,
+	0xbc, 0x99, 0xce, 0xbc, 0x16, 0xaa, 0x8c, 0xfb, 0x21, 0xfd, 0xe6, 0x8f, 0x18, 0xed, 0x04, 0xa1,
+	0xcf, 0x7d, 0xac, 0xf7, 0x03, 0x97, 0xd8, 0x00, 0xe7, 0x69, 0x00, 0x6f, 0x83, 0xe6, 0x3a, 0x06,
+	0x6a, 0xa0, 0xf6, 0x46, 0x4f, 0x73, 0x1d, 0x8c, 0x61, 0xdd, 0xeb, 0x0f, 0xa9, 0xa1, 0x35, 0x50,
+	0xfb, 0x46, 0x2f, 0xfe, 0x19, 0xd7, 0xe0, 0xda, 0xc0, 0xe5, 0xe3, 0xcf, 0xae, 0x63, 0xe8, 0x31,
+	0xb0, 0x12, 0x7d, 0xda, 0x0e, 0xf9, 0x09, 0xdb, 0x19, 0x95, 0xcd, 0xe9, 0xb0, 0x40, 0xb7, 0x0f,
+	0x37, 0x33, 0x15, 0x11, 0x81, 0x16, 0x87, 0xb6, 0xb2, 0x47, 0xdb, 0xc1, 0x4d, 0xd8, 0x1a, 0xf8,
+	0xc3, 0xc0, 0xf7, 0xa8, 0xc7, 0xb3, 0x22, 0x9b, 0xe9, 0x9b, 0xed, 0xe0, 0x1d, 0xd8, 0x18, 0xf8,
+	0x23, 0x8f, 0x1b, 0xeb, 0x71, 0x6c, 0xf2, 0x41, 0x4e, 0xa0, 0x66, 0x85, 0xb4, 0xcf, 0x69, 0xa6,
+	0xa2, 0x47, 0xbf, 0x8f, 0x28, 0xe3, 0x69, 0x1f, 0x48, 0xde, 0x87, 0x36, 0xd3, 0x87, 0x05, 0x46,
+	0x91, 0x87, 0x05, 0xbe, 0xc7, 0x28, 0x6e, 0x41, 0x25, 0xa4, 0x6c, 0x74, 0xc9, 0x63, 0xaa, 0xcd,
+	0xa3, 0x5b, 0x9d, 0x7e, 0xe0, 0x76, 0x72, 0xc0, 0x24, 0x4c, 0x8e, 0xa1, 0xf9, 0x96, 0xf2, 0x2c,
+	0xc0, 0x4e, 0x5d, 0xc6, 0xbb, 0x63, 0x2b, 0x2e, 0x31, 0x95, 0x95, 0x93, 0x80, 0x66, 0x24, 0xbc,
+	0x87, 0xd6, 0x4c, 0x76, 0x34, 0x4d, 0xd6, 0x1d, 0xe7, 0x1e, 0x52, 0x8e, 0xc2, 0x4c, 0x51, 0x71,
+	0xa6, 0xe4, 0x0d, 0x98, 0x45, 0x35, 0xd2, 0xa6, 0xf4, 0xb2, 0xa6, 0x3a, 0x50, 0x2f, 0xc8, 0xea,
+	0xe6, 0xfa, 0x11, 0x7e, 0xdf, 0xe4, 0x14, 0xf6, 0x14, 0xf8, 0xa4, 0xf2, 0x63, 0x61, 0x9c, 0x77,
+	0x84, 0xca, 0x51, 0x42, 0x5a, 0xfd, 0x37, 0x82, 0xe7, 0xf3, 0xa6, 0xf2, 0xca, 0x73, 0xac, 0xe9,
+	0xa2, 0x30, 0xdb, 0x61, 0xcb, 0x4c, 0x29, 0x02, 0xe5, 0x37, 0x8f, 0x19, 0x5a, 0x43, 0x8f, 0x40,
+	0xb9, 0xd5, 0x63, 0xe4, 0x02, 0x5e, 0x2c, 0x2f, 0x42, 0xd2, 0xae, 0x3e, 0xaf, 0xdd, 0x8f, 0xd0,
+	0x9e, 0xbf, 0x03, 0xab, 0x10, 0xff, 0x41, 0xd0, 0x12, 0x17, 0x3c, 0x02, 0x9c, 0xf8, 0x61, 0xf2,
+	0x90, 0x1d, 0x8e, 0x78, 0x8c, 0xa8, 0x78, 0x8c, 0x0b, 0x1d, 0x75, 0x7a, 0xb1, 0x7a, 0xfe, 0x62,
+	0xdf, 0x41, 0x5d, 0x26, 0x64, 0xb5, 0xf5, 0xb0, 0x60, 0xf7, 0x43, 0xe0, 0x48, 0xc8, 0xa4, 0xbb,
+	0x99, 0x29, 0xd2, 0x04, 0x45, 0x72, 0x92, 0x55, 0x14, 0x3d, 0x84, 0xda, 0x6b, 0x7a, 0x49, 0x65,
+	0x86, 0x24, 0x5e, 0x8a, 0x09, 0x46, 0x11, 0x3a, 0xa9, 0x49, 0x0e, 0x61, 0x57, 0x8c, 0x95, 0x34,
+	0x46, 0x46, 0xf0, 0x48, 0x06, 0x67, 0xdd, 0xb1, 0x95, 0xdb, 0xe3, 0xa5, 0x0e, 0x83, 0xc0, 0xcc,
+	0x0d, 0x48, 0xef, 0xe2, 0x1e, 0xd4, 0xe5, 0x2a, 0x27, 0x5d, 0x1c, 0xfd, 0xbb, 0x0e, 0xb7, 0xb3,
+	0xd0, 0x39, 0x0d, 0xaf, 0xdc, 0x01, 0xc5, 0x67, 0x50, 0x15, 0x37, 0x00, 0xd7, 0xe3, 0x99, 0x2a,
+	0xac, 0xdc, 0xdc, 0x53, 0x44, 0x93, 0x61, 0xad, 0xe1, 0x0b, 0x99, 0xd7, 0x4d, 0x9d, 0x17, 0x3f,
+	0x88, 0xd3, 0xe7, 0x5a, 0xb3, 0x79, 0x5f, 0x81, 0xcb, 0x15, 0xfa, 0x02, 0x77, 0xa5, 0xee, 0x86,
+	0x9b, 0xc5, 0x5c, 0xc1, 0x29, 0x4d, 0x52, 0x06, 0x49, 0x2b, 0xfc, 0x42, 0xd0, 0x98, 0xe7, 0x01,
+	0xf8, 0x40, 0x4e, 0x25, 0xff, 0x73, 0x61, 0x1e, 0x2e, 0x88, 0x4e, 0x35, 0xfc, 0x45, 0xf0, 0x74,
+	0x59, 0xc3, 0xc3, 0xc7, 0x0b, 0x55, 0x51, 0x98, 0xb5, 0xf9, 0x72, 0xc5, 0xec, 0x54, 0xf3, 0x15,
+	0x34, 0xcb, 0x0d, 0x2e, 0x5a, 0xb3, 0x03, 0xe9, 0x22, 0x29, 0x8c, 0xd0, 0x6c, 0x2a, 0xd1, 0xb9,
+	0xba, 0x9f, 0x60, 0x47, 0xe6, 0x1e, 0xb8, 0x11, 0x27, 0x97, 0xb8, 0x53, 0x42, 0x5f, 0x66, 0x3d,
+	0x13, 0x7a, 0xd9, 0x89, 0x25, 0xf4, 0x25, 0x1e, 0x91, 0xd0, 0x97, 0xdd, 0x27, 0x59, 0xc3, 0x3f,
+	0x60, 0x7f, 0x01, 0xe3, 0xc0, 0x4f, 0x94, 0x5c, 0x72, 0x8b, 0x59, 0xac, 0xf8, 0x19, 0x54, 0x45,
+	0x44, 0x62, 0x04, 0x0a, 0x0b, 0x4d, 0x8c, 0x40, 0xe9, 0x9a, 0x6b, 0x5f, 0x2b, 0xf1, 0xbf, 0xb9,
+	0xcf, 0xfe, 0x07, 0x00, 0x00, 0xff, 0xff, 0x4d, 0x86, 0x0f, 0x53, 0xfa, 0x0a, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -883,11 +1019,13 @@ const _ = grpc.SupportPackageIsVersion4
 type StorehouseServiceClient interface {
 	CreateStorehouse(ctx context.Context, in *CreateStorehouseRequest, opts ...grpc.CallOption) (*CreateStorehouseResponse, error)
 	GetStorehousesListByCityId(ctx context.Context, in *GetStorehousesListByCityIdRequest, opts ...grpc.CallOption) (*GetStorehousesListResponse, error)
+	GetStorehouseItemById(ctx context.Context, in *GetStorehouseItemByIdRequest, opts ...grpc.CallOption) (*GetStorehouseItemByIdResponse, error)
 	GetStorehouseItemsByStorehouseId(ctx context.Context, in *GetStorehouseItemsByStorehouseIdRequest, opts ...grpc.CallOption) (*GetStorehouseItemsByStorehouseIdResponse, error)
 	GetStorehouseItemsByStorehouseIdAndComponentsIds(ctx context.Context, in *GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest, opts ...grpc.CallOption) (*GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse, error)
 	CreateStorehouseItemForStorehouse(ctx context.Context, in *CreateStorehouseItemForStorehoseRequest, opts ...grpc.CallOption) (*CreateStorehouseItemResponse, error)
 	UpdateStorehouseItem(ctx context.Context, in *UpdateStorehouseItemRequest, opts ...grpc.CallOption) (*UpdateStorehouseItemResponse, error)
 	DeleteStorehouseItem(ctx context.Context, in *DeleteStorehouseItemRequest, opts ...grpc.CallOption) (*DeleteStorehouseItemResponse, error)
+	DeleteStorehouseItemsByComponentIds(ctx context.Context, in *DeleteStorehouseItemsByComponentIdsRequest, opts ...grpc.CallOption) (*DeleteStorehouseItemResponse, error)
 	DeleteStorehouse(ctx context.Context, in *DeleteStorehouseRequest, opts ...grpc.CallOption) (*DeleteStorehouseResponse, error)
 }
 
@@ -911,6 +1049,15 @@ func (c *storehouseServiceClient) CreateStorehouse(ctx context.Context, in *Crea
 func (c *storehouseServiceClient) GetStorehousesListByCityId(ctx context.Context, in *GetStorehousesListByCityIdRequest, opts ...grpc.CallOption) (*GetStorehousesListResponse, error) {
 	out := new(GetStorehousesListResponse)
 	err := c.cc.Invoke(ctx, "/api.StorehouseService/GetStorehousesListByCityId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storehouseServiceClient) GetStorehouseItemById(ctx context.Context, in *GetStorehouseItemByIdRequest, opts ...grpc.CallOption) (*GetStorehouseItemByIdResponse, error) {
+	out := new(GetStorehouseItemByIdResponse)
+	err := c.cc.Invoke(ctx, "/api.StorehouseService/GetStorehouseItemById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -962,6 +1109,15 @@ func (c *storehouseServiceClient) DeleteStorehouseItem(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *storehouseServiceClient) DeleteStorehouseItemsByComponentIds(ctx context.Context, in *DeleteStorehouseItemsByComponentIdsRequest, opts ...grpc.CallOption) (*DeleteStorehouseItemResponse, error) {
+	out := new(DeleteStorehouseItemResponse)
+	err := c.cc.Invoke(ctx, "/api.StorehouseService/DeleteStorehouseItemsByComponentIds", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *storehouseServiceClient) DeleteStorehouse(ctx context.Context, in *DeleteStorehouseRequest, opts ...grpc.CallOption) (*DeleteStorehouseResponse, error) {
 	out := new(DeleteStorehouseResponse)
 	err := c.cc.Invoke(ctx, "/api.StorehouseService/DeleteStorehouse", in, out, opts...)
@@ -975,11 +1131,13 @@ func (c *storehouseServiceClient) DeleteStorehouse(ctx context.Context, in *Dele
 type StorehouseServiceServer interface {
 	CreateStorehouse(context.Context, *CreateStorehouseRequest) (*CreateStorehouseResponse, error)
 	GetStorehousesListByCityId(context.Context, *GetStorehousesListByCityIdRequest) (*GetStorehousesListResponse, error)
+	GetStorehouseItemById(context.Context, *GetStorehouseItemByIdRequest) (*GetStorehouseItemByIdResponse, error)
 	GetStorehouseItemsByStorehouseId(context.Context, *GetStorehouseItemsByStorehouseIdRequest) (*GetStorehouseItemsByStorehouseIdResponse, error)
 	GetStorehouseItemsByStorehouseIdAndComponentsIds(context.Context, *GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) (*GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse, error)
 	CreateStorehouseItemForStorehouse(context.Context, *CreateStorehouseItemForStorehoseRequest) (*CreateStorehouseItemResponse, error)
 	UpdateStorehouseItem(context.Context, *UpdateStorehouseItemRequest) (*UpdateStorehouseItemResponse, error)
 	DeleteStorehouseItem(context.Context, *DeleteStorehouseItemRequest) (*DeleteStorehouseItemResponse, error)
+	DeleteStorehouseItemsByComponentIds(context.Context, *DeleteStorehouseItemsByComponentIdsRequest) (*DeleteStorehouseItemResponse, error)
 	DeleteStorehouse(context.Context, *DeleteStorehouseRequest) (*DeleteStorehouseResponse, error)
 }
 
@@ -992,6 +1150,9 @@ func (*UnimplementedStorehouseServiceServer) CreateStorehouse(ctx context.Contex
 }
 func (*UnimplementedStorehouseServiceServer) GetStorehousesListByCityId(ctx context.Context, req *GetStorehousesListByCityIdRequest) (*GetStorehousesListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStorehousesListByCityId not implemented")
+}
+func (*UnimplementedStorehouseServiceServer) GetStorehouseItemById(ctx context.Context, req *GetStorehouseItemByIdRequest) (*GetStorehouseItemByIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStorehouseItemById not implemented")
 }
 func (*UnimplementedStorehouseServiceServer) GetStorehouseItemsByStorehouseId(ctx context.Context, req *GetStorehouseItemsByStorehouseIdRequest) (*GetStorehouseItemsByStorehouseIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStorehouseItemsByStorehouseId not implemented")
@@ -1007,6 +1168,9 @@ func (*UnimplementedStorehouseServiceServer) UpdateStorehouseItem(ctx context.Co
 }
 func (*UnimplementedStorehouseServiceServer) DeleteStorehouseItem(ctx context.Context, req *DeleteStorehouseItemRequest) (*DeleteStorehouseItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorehouseItem not implemented")
+}
+func (*UnimplementedStorehouseServiceServer) DeleteStorehouseItemsByComponentIds(ctx context.Context, req *DeleteStorehouseItemsByComponentIdsRequest) (*DeleteStorehouseItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorehouseItemsByComponentIds not implemented")
 }
 func (*UnimplementedStorehouseServiceServer) DeleteStorehouse(ctx context.Context, req *DeleteStorehouseRequest) (*DeleteStorehouseResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorehouse not implemented")
@@ -1048,6 +1212,24 @@ func _StorehouseService_GetStorehousesListByCityId_Handler(srv interface{}, ctx 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(StorehouseServiceServer).GetStorehousesListByCityId(ctx, req.(*GetStorehousesListByCityIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorehouseService_GetStorehouseItemById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStorehouseItemByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorehouseServiceServer).GetStorehouseItemById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.StorehouseService/GetStorehouseItemById",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorehouseServiceServer).GetStorehouseItemById(ctx, req.(*GetStorehouseItemByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1142,6 +1324,24 @@ func _StorehouseService_DeleteStorehouseItem_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StorehouseService_DeleteStorehouseItemsByComponentIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteStorehouseItemsByComponentIdsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorehouseServiceServer).DeleteStorehouseItemsByComponentIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.StorehouseService/DeleteStorehouseItemsByComponentIds",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorehouseServiceServer).DeleteStorehouseItemsByComponentIds(ctx, req.(*DeleteStorehouseItemsByComponentIdsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _StorehouseService_DeleteStorehouse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteStorehouseRequest)
 	if err := dec(in); err != nil {
@@ -1173,6 +1373,10 @@ var _StorehouseService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _StorehouseService_GetStorehousesListByCityId_Handler,
 		},
 		{
+			MethodName: "GetStorehouseItemById",
+			Handler:    _StorehouseService_GetStorehouseItemById_Handler,
+		},
+		{
 			MethodName: "GetStorehouseItemsByStorehouseId",
 			Handler:    _StorehouseService_GetStorehouseItemsByStorehouseId_Handler,
 		},
@@ -1191,6 +1395,10 @@ var _StorehouseService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteStorehouseItem",
 			Handler:    _StorehouseService_DeleteStorehouseItem_Handler,
+		},
+		{
+			MethodName: "DeleteStorehouseItemsByComponentIds",
+			Handler:    _StorehouseService_DeleteStorehouseItemsByComponentIds_Handler,
 		},
 		{
 			MethodName: "DeleteStorehouse",

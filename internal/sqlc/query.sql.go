@@ -67,6 +67,21 @@ func (q *Queries) DeleteItem(ctx context.Context, id int64) error {
 	return err
 }
 
+const deleteItemsByStorehouseAndComponentIds = `-- name: DeleteItemsByStorehouseAndComponentIds :exec
+DELETE FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id = ANY($2::int[])
+`
+
+type DeleteItemsByStorehouseAndComponentIdsParams struct {
+	StorehouseID  int32
+	ComponentsIds []int32
+}
+
+func (q *Queries) DeleteItemsByStorehouseAndComponentIds(ctx context.Context, arg DeleteItemsByStorehouseAndComponentIdsParams) error {
+	_, err := q.db.Exec(ctx, deleteItemsByStorehouseAndComponentIds, arg.StorehouseID, arg.ComponentsIds)
+	return err
+}
+
 const deleteStorehouse = `-- name: DeleteStorehouse :exec
 DELETE FROM storehouse
 WHERE id = $1
@@ -77,6 +92,23 @@ func (q *Queries) DeleteStorehouse(ctx context.Context, id int64) error {
 	return err
 }
 
+const getAllStorehouseItemById = `-- name: GetAllStorehouseItemById :one
+SELECT id, storehouse_id, component_id, count FROM storehouse_item
+WHERE id = $1
+`
+
+func (q *Queries) GetAllStorehouseItemById(ctx context.Context, id int64) (StorehouseItem, error) {
+	row := q.db.QueryRow(ctx, getAllStorehouseItemById, id)
+	var i StorehouseItem
+	err := row.Scan(
+		&i.ID,
+		&i.StorehouseID,
+		&i.ComponentID,
+		&i.Count,
+	)
+	return i, err
+}
+
 const getAllStorehouseItemsByStorehouse = `-- name: GetAllStorehouseItemsByStorehouse :many
 SELECT id, storehouse_id, component_id, count FROM storehouse_item
 WHERE storehouse_id = $1
@@ -84,6 +116,42 @@ WHERE storehouse_id = $1
 
 func (q *Queries) GetAllStorehouseItemsByStorehouse(ctx context.Context, storehouseID int32) ([]StorehouseItem, error) {
 	rows, err := q.db.Query(ctx, getAllStorehouseItemsByStorehouse, storehouseID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []StorehouseItem
+	for rows.Next() {
+		var i StorehouseItem
+		if err := rows.Scan(
+			&i.ID,
+			&i.StorehouseID,
+			&i.ComponentID,
+			&i.Count,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStorehouseItemsByStorehouseAndComponentId = `-- name: GetStorehouseItemsByStorehouseAndComponentId :many
+SELECT id, storehouse_id, component_id, count FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id = $2
+LIMIT 1
+`
+
+type GetStorehouseItemsByStorehouseAndComponentIdParams struct {
+	StorehouseID int32
+	ComponentID  int32
+}
+
+func (q *Queries) GetStorehouseItemsByStorehouseAndComponentId(ctx context.Context, arg GetStorehouseItemsByStorehouseAndComponentIdParams) ([]StorehouseItem, error) {
+	rows, err := q.db.Query(ctx, getStorehouseItemsByStorehouseAndComponentId, arg.StorehouseID, arg.ComponentID)
 	if err != nil {
 		return nil, err
 	}

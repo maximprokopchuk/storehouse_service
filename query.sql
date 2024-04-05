@@ -16,6 +16,17 @@ SELECT * FROM storehouse_item
 WHERE storehouse_id = $1;
 
 
+-- name: GetAllStorehouseItemById :one
+SELECT * FROM storehouse_item
+WHERE id = $1;
+
+
+-- name: GetStorehouseItemsByStorehouseAndComponentId :many
+SELECT * FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id = $2
+LIMIT 1;
+
+
 -- name: GetStorehouseItemsByStorehouseAndComponents :many
 SELECT * FROM storehouse_item
 WHERE storehouse_id = $1 AND component_id = ANY(@components_ids::int[]);
@@ -42,3 +53,7 @@ WHERE id = $1;
 -- name: DeleteItem :exec
 DELETE FROM storehouse_item
 WHERE id = $1;
+
+-- name: DeleteItemsByStorehouseAndComponentIds :exec
+DELETE FROM storehouse_item
+WHERE storehouse_id = $1 AND component_id = ANY(@components_ids::int[]);

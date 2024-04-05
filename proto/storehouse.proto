@@ -28,12 +28,20 @@ message GetStorehousesListByCityIdRequest {
     int32 city_id = 1;
 }
 
+message GetStorehouseItemsByStorehouseIdRequest {
+    int32 storehouse_id = 1;
+}
+
 message GetStorehousesListResponse {
     repeated Storehouse result = 1;
 }
 
-message GetStorehouseItemsByStorehouseIdRequest {
-    int32 storehouse_id = 1;
+message GetStorehouseItemByIdRequest {
+    int32 id = 1;
+}
+
+message GetStorehouseItemByIdResponse {
+    StorehouseItem result = 1;
 }
 
 message GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest {
@@ -78,16 +86,23 @@ message DeleteStorehouseItemRequest {
     int32 id = 1;
 }
 
+message DeleteStorehouseItemsByComponentIdsRequest {
+    int32 storehouse_id = 1;
+    repeated int32 componentIds = 2;
+}
+
 message DeleteStorehouseItemResponse {}
 
 
 service StorehouseService {
     rpc CreateStorehouse(CreateStorehouseRequest) returns (CreateStorehouseResponse){}
     rpc GetStorehousesListByCityId(GetStorehousesListByCityIdRequest) returns (GetStorehousesListResponse){}
+    rpc GetStorehouseItemById(GetStorehouseItemByIdRequest) returns (GetStorehouseItemByIdResponse){}
     rpc GetStorehouseItemsByStorehouseId(GetStorehouseItemsByStorehouseIdRequest) returns (GetStorehouseItemsByStorehouseIdResponse) {}
     rpc GetStorehouseItemsByStorehouseIdAndComponentsIds(GetStorehouseItemsByStorehouseIdAndComponentsIdsRequest) returns (GetStorehouseItemsByStorehouseIdAndComponentsIdsResponse) {}
     rpc CreateStorehouseItemForStorehouse(CreateStorehouseItemForStorehoseRequest) returns (CreateStorehouseItemResponse){}
     rpc UpdateStorehouseItem(UpdateStorehouseItemRequest) returns (UpdateStorehouseItemResponse){}
     rpc DeleteStorehouseItem(DeleteStorehouseItemRequest) returns (DeleteStorehouseItemResponse){}
+    rpc DeleteStorehouseItemsByComponentIds(DeleteStorehouseItemsByComponentIdsRequest) returns (DeleteStorehouseItemResponse){}
     rpc DeleteStorehouse(DeleteStorehouseRequest) returns (DeleteStorehouseResponse){}
 }
