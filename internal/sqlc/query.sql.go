@@ -32,9 +32,9 @@ func (q *Queries) CreateStorehouse(ctx context.Context, arg CreateStorehousePara
 
 const createStorehouseItemForStorehouse = `-- name: CreateStorehouseItemForStorehouse :one
 INSERT INTO storehouse_item (
-  component_id, storehouse_id
+  component_id, storehouse_id, count
 ) VALUES (
-  $1, $2
+  $1, $2, $3
 )
 RETURNING id, storehouse_id, component_id, count
 `
@@ -42,10 +42,11 @@ RETURNING id, storehouse_id, component_id, count
 type CreateStorehouseItemForStorehouseParams struct {
 	ComponentID  int32
 	StorehouseID int32
+	Count        int32
 }
 
 func (q *Queries) CreateStorehouseItemForStorehouse(ctx context.Context, arg CreateStorehouseItemForStorehouseParams) (StorehouseItem, error) {
-	row := q.db.QueryRow(ctx, createStorehouseItemForStorehouse, arg.ComponentID, arg.StorehouseID)
+	row := q.db.QueryRow(ctx, createStorehouseItemForStorehouse, arg.ComponentID, arg.StorehouseID, arg.Count)
 	var i StorehouseItem
 	err := row.Scan(
 		&i.ID,

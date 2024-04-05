@@ -68,8 +68,10 @@ func (server *GRPCServer) GetStorehouseItemsByStorehouseId(ctx context.Context, 
 
 	for _, item := range rec {
 		newRec := api.StorehouseItem{
-			Id:    int32(item.ID),
-			Count: item.Count,
+			Id:           int32(item.ID),
+			Count:        item.Count,
+			ComponentId:  item.ComponentID,
+			StorehouseId: item.StorehouseID,
 		}
 		items = append(items, &newRec)
 	}
@@ -84,7 +86,7 @@ func (server *GRPCServer) GetStorehouseItemsByStorehouseIdAndComponentsIds(ctx c
 	}
 	rec, err := server.Store.Queries.GetStorehouseItemsByStorehouseAndComponents(ctx, params)
 
-	fmt.Println(err)
+	fmt.Println(rec)
 	if err != nil {
 		return nil, err
 	}
@@ -93,8 +95,10 @@ func (server *GRPCServer) GetStorehouseItemsByStorehouseIdAndComponentsIds(ctx c
 
 	for _, item := range rec {
 		newRec := api.StorehouseItem{
-			Id:    int32(item.ID),
-			Count: item.Count,
+			Id:           int32(item.ID),
+			Count:        item.Count,
+			ComponentId:  item.ComponentID,
+			StorehouseId: item.StorehouseID,
 		}
 		items = append(items, &newRec)
 	}
@@ -106,6 +110,7 @@ func (server *GRPCServer) CreateStorehouseItemForStorehouse(ctx context.Context,
 	params := sqlc.CreateStorehouseItemForStorehouseParams{
 		ComponentID:  req.GetComponentId(),
 		StorehouseID: req.GetStorehouseId(),
+		Count:        req.GetCount(),
 	}
 	rec, err := server.Store.Queries.CreateStorehouseItemForStorehouse(ctx, params)
 

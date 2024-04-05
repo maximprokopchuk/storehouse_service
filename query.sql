@@ -22,9 +22,9 @@ WHERE storehouse_id = $1 AND component_id = ANY(@components_ids::int[]);
 
 -- name: CreateStorehouseItemForStorehouse :one
 INSERT INTO storehouse_item (
-  component_id, storehouse_id
+  component_id, storehouse_id, count
 ) VALUES (
-  $1, $2
+  $1, $2, $3
 )
 RETURNING *;
 
