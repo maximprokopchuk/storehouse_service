@@ -82,6 +82,12 @@ message DeleteStorehouseRequest {
 
 message DeleteStorehouseResponse {}
 
+message DeleteStorehousesByCityIdRequest {
+    repeated int32 city_ids = 1;
+}
+
+message DeleteStorehousesByCityIdResponse {}
+
 message DeleteStorehouseItemRequest {
     int32 id = 1;
 }
@@ -105,4 +111,5 @@ service StorehouseService {
     rpc DeleteStorehouseItem(DeleteStorehouseItemRequest) returns (DeleteStorehouseItemResponse){}
     rpc DeleteStorehouseItemsByComponentIds(DeleteStorehouseItemsByComponentIdsRequest) returns (DeleteStorehouseItemResponse){}
     rpc DeleteStorehouse(DeleteStorehouseRequest) returns (DeleteStorehouseResponse){}
+    rpc DeleteStorehousesByCityId(DeleteStorehousesByCityIdRequest) returns (DeleteStorehousesByCityIdResponse){}
 }

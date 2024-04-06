@@ -216,3 +216,13 @@ func (server *GRPCServer) DeleteStorehouseItemsByComponentIds(ctx context.Contex
 
 	return &api.DeleteStorehouseItemResponse{}, nil
 }
+
+func (server *GRPCServer) DeleteStorehousesByCityId(ctx context.Context, req *api.DeleteStorehousesByCityIdRequest) (*api.DeleteStorehousesByCityIdResponse, error) {
+	err := server.Store.Queries.DeleteStorehousesByCityId(ctx, req.GetCityIds())
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &api.DeleteStorehousesByCityIdResponse{}, nil
+}

@@ -92,6 +92,16 @@ func (q *Queries) DeleteStorehouse(ctx context.Context, id int64) error {
 	return err
 }
 
+const deleteStorehousesByCityId = `-- name: DeleteStorehousesByCityId :exec
+DELETE FROM storehouse
+WHERE city_id = ANY($1::int[])
+`
+
+func (q *Queries) DeleteStorehousesByCityId(ctx context.Context, cityIds []int32) error {
+	_, err := q.db.Exec(ctx, deleteStorehousesByCityId, cityIds)
+	return err
+}
+
 const getAllStorehouseItemById = `-- name: GetAllStorehouseItemById :one
 SELECT id, storehouse_id, component_id, count FROM storehouse_item
 WHERE id = $1

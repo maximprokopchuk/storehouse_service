@@ -50,6 +50,11 @@ RETURNING *;
 DELETE FROM storehouse
 WHERE id = $1;
 
+
+-- name: DeleteStorehousesByCityId :exec
+DELETE FROM storehouse
+WHERE city_id = ANY(@city_ids::int[]);
+
 -- name: DeleteItem :exec
 DELETE FROM storehouse_item
 WHERE id = $1;
