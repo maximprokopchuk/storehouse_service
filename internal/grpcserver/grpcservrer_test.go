@@ -28,4 +28,5 @@ func TestServer(t *testing.T) {
 	assert.NotNil(t, server.DeleteStorehouseItem)
 	assert.NotNil(t, server.DeleteStorehouseItemsByComponentIds)
 	assert.NotNil(t, server.DeleteStorehouse)
+	assert.NotNil(t, server.DeleteStorehousesByCityId)
 }
